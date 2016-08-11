@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/images/linode/system_running.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/ssh_root.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/welcome_ubuntu.png">
-<meta property="og:updated_time" content="2016-08-11T08:26:17.000Z">
+<meta property="og:updated_time" content="2016-08-11T08:31:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linode上搭建VPN服务">
 <meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
@@ -308,7 +308,7 @@
 <p>或者改成：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip 192.168.0.1</div><div class="line">remoteip 192.168.0.100-200</div></pre></td></tr></table></figure></p>
 <p>然后保存并退出（Vim insert 状态下按 esc 键，然后输入“:wq”来保存退出）</p>
 <h2 id="添加-PPTP-VPN-用户"><a href="#添加-PPTP-VPN-用户" class="headerlink" title="添加 PPTP VPN 用户"></a>添加 PPTP VPN 用户</h2><p>为你的 VPN 添加用户:<br><code>vim /etc/ppp/chap-secrets</code></p>
-<p>这个文件中有四列 client、server、 secret、IP addresses，分别是你 PPTP 上面的帐号名、服务器、密码、IP地址；帐户就填写之后你 VPN 登录时想要使用的用户名，server是 PPTP，填 <em> 也可以，secret 填写密码，IP地址填写 </em> 即可，服务器会自行分配。<br>例如填写：<code>admin pptp 123 *</code> （每一列用空格分开）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#client    server  secret      IP addresses</div><div class="line">admin pptp 123 *</div></pre></td></tr></table></figure></p>
+<p>这个文件中有四列 client、server、 secret、IP addresses，分别是你 PPTP 上面的帐号名、服务器、密码、IP地址；帐户就填写之后你 VPN 登录时想要使用的用户名，server是 PPTP，填 * 也可以，secret 填写密码，IP地址填写 * 即可，服务器会自行分配。<br>例如填写：<code>admin pptp 123 *</code> （每一列用空格分开）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#client    server  secret      IP addresses</div><div class="line">admin pptp 123 *</div></pre></td></tr></table></figure></p>
 <h2 id="修改-DNS"><a href="#修改-DNS" class="headerlink" title="修改 DNS"></a>修改 DNS</h2><p>编辑 /etc/ppp/options<br><code>vim /etc/ppp/options</code><br>找到ms-dns，删除前面注释的#号，修改为下面这样：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ms-dns 8.8.8.8</div><div class="line">ms-dns 8.8.4.4</div></pre></td></tr></table></figure></p>
 <h2 id="打开-IPv4-转发"><a href="#打开-IPv4-转发" class="headerlink" title="打开 IPv4 转发"></a>打开 IPv4 转发</h2><p>编辑 /etc/sysctl.conf 文件<br><code>vim /etc/sysctl.conf</code><br>找到net.ipv4.ip_forward=1，去掉前面的#号注释：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net.ipv4.ip_forward=1</div></pre></td></tr></table></figure></p>
 <p>执行下面的命令，使转发配置生效<br><code>sysctl -p</code></p>
