@@ -94,17 +94,17 @@
 <meta property="og:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。
 关于 Apple Payapple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。
 使用 Apple Pay 的 APP">
-<meta property="og:image" content="http://yoursite.com/images/payment_intro.png">
-<meta property="og:image" content="http://yoursite.com/images/enable_apple_pay.png">
-<meta property="og:image" content="http://yoursite.com/images/payment_process.png">
-<meta property="og:image" content="http://yoursite.com/images/payment_data_structure.png">
-<meta property="og:updated_time" content="2016-08-11T02:51:44.000Z">
+<meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_intro.png">
+<meta property="og:image" content="http://yoursite.com/images/apple_pay/enable_apple_pay.png">
+<meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_process.png">
+<meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_data_structure.png">
+<meta property="og:updated_time" content="2016-08-11T06:25:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apple Pay">
 <meta name="twitter:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。
 关于 Apple Payapple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。
 使用 Apple Pay 的 APP">
-<meta name="twitter:image" content="http://yoursite.com/images/payment_intro.png">
+<meta name="twitter:image" content="http://yoursite.com/images/apple_pay/payment_intro.png">
 
 
 
@@ -291,13 +291,13 @@
 <h1 id="关于-Apple-Pay"><a href="#关于-Apple-Pay" class="headerlink" title="关于 Apple Pay"></a>关于 Apple Pay</h1><p>apple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。</p>
 <p>使用 Apple Pay 的 APP 需要在 Xcode 中打开 Apple Pay 功能，同时需要注册一个商户ID，并设置好加密密钥，这个密钥是用来将支付数据安全地发送到我们自己的服务器。</p>
 <a id="more"></a>
-<p><img src="/images/payment_intro.png" alt="payment_intro" title="支付流程"></p>
+<p><img src="/images/apple_pay/payment_intro.png" alt="payment_intro" title="支付流程"></p>
 <p>在开始一次支付时，APP 需要创建一个支付请求。这个支付请求不仅包含了已购买的服务或者商品的一些合计，同时也包含了税金、配送费或者是折扣等一些附加费用的信息。将这个请求传递给一个payment authorization view controller ，这个控制器将支付请求的信息显示出来，并提示用户一些必要信息，例如配送地址或者账单寄送地址。在用户与这个view controller 交互时，会调用delegate来更新支付请求。</p>
 <p>一旦用户对这次支付授权完成，Apple Pay 会将支付信息加密，以防止未授权的第三方来访问这些信息。在用户的设备上，Apple Pay 发送了一个支付请求到 Secure Element，SE 是在设备上专门保证安全的一块芯片。SE 会将用户指定银行卡信息和商户信息添加到支付请求中去，并且创建一个加密的支付 token 。然后将这个 token 发送到苹果服务器，苹果服务器会使用我们提供的商户ID证书将支付请求再次加密。最后服务器会将这个请求返回到应用中来进行后续的操作。苹果服务器不会访问或者保存支付 token，服务器只是简单的将 token 用开发者的证书再次加密。</p>
 <p>大部分情况下，应用将加密过的支付 token 发送到第三方支付平台解密并完成支付。也可以在自己的服务器上完成界面和支付的过程。</p>
 <hr>
 <h1 id="配置支付环境"><a href="#配置支付环境" class="headerlink" title="配置支付环境"></a>配置支付环境</h1><p>首先我们需要一个 Merchant ID，这样 Apple Pay 才能够识别出接收支付的对象。公钥和证书会跟我们的 Merchant ID 关联，在加密支付信息操作时会用到它们。使用 Apple Pay 之前要先注册一个 Merchant ID 并且配置好证书。<br><a href="http://developer.apple.com/account" target="_blank" rel="external">http://developer.apple.com/account</a> 在这里注册 Merchant ID 和配置证书。</p>
-<p>然后在工程的 Capabilities 窗口中将 Apple Pay 打开，选中想要该应用使用的 Merchant ID。<br><img src="/images/enable_apple_pay.png" alt="enable_apple_pay" title="打开Apple Pay"></p>
+<p>然后在工程的 Capabilities 窗口中将 Apple Pay 打开，选中想要该应用使用的 Merchant ID。<br><img src="/images/apple_pay/enable_apple_pay.png" alt="enable_apple_pay" title="打开Apple Pay"></p>
 <hr>
 <h1 id="创建支付请求"><a href="#创建支付请求" class="headerlink" title="创建支付请求"></a>创建支付请求</h1><p>支付请求是’PKPaymentRequest’类的一个实例。一个支付请求由以下几部分组成：一个为用户描述支付项目的摘要列表、一个可用的配送信息列表、一段提示用户提供配送信息的文案，以及一些商户信息和支付平台的信息。</p>
 <h2 id="判断用户是否可用-Apple-Pay-支付"><a href="#判断用户是否可用-Apple-Pay-支付" class="headerlink" title="判断用户是否可用 Apple Pay 支付"></a>判断用户是否可用 Apple Pay 支付</h2><p>在创建支付请求之前，要先调用 <code>PKPaymentAuthorizationViewController</code> 类中的 <code>canMakePaymentUsingNetworks:</code> 方法来判定用户能不能用我们提供的支付系统来进行支付。如果要检查用户的设备硬件是否支持 Apple Pay ，或者检查是否因“家长控制”功能开启而导致不能支付的情况，那么要调用 <code>canMakePayments</code> 方法。</p>
@@ -324,7 +324,7 @@
 <li>苹果的服务器会使用开发者提供的商户ID证书将这些支付数据再次加密。再次加密完成后，苹果服务器会对支付数据签名并生成 token 发送到用户的设备上，只有拥有商户ID证书的人才能读取加密过的 token 。</li>
 <li>PK 框架会把这个 token 通过调用 <code>paymentAuthorizationViewController:didAuthorizePayment:completion:</code> 方法来回调 delegate ，我们拿到 token 后要发送到自己的服务器。</li>
 </ul>
-<p><img src="/images/payment_process.png" alt="payment_process" title="支付总体流程"></p>
+<p><img src="/images/apple_pay/payment_process.png" alt="payment_process" title="支付总体流程"></p>
 <p>在我们自己的服务器上的操作是根据不同情况来决定的，我们可以自己处理支付或者使用其他的支付平台来处理支付。不论是哪一种情况，我们自己的服务器都要处理支付的订单并将支付状态返回到设备上，在 <code>paymentAuthorizationViewController:didAuthorizePayment:completion:</code>方法中处理支付状态，并在 completion block 中将状态传递给支付授权控制器。</p>
 <h2 id="授权结束后释放支付授权控制器"><a href="#授权结束后释放支付授权控制器" class="headerlink" title="授权结束后释放支付授权控制器"></a>授权结束后释放支付授权控制器</h2><p>在 PassKit 框架显示交易状态之后，支付授权控制器会调用 delegate 的方法  <code>paymentAuthorizationViewControllerDidFinish:</code> ，在这个 delegate 方法的实现中，delegate 要将支付授权控制器关闭，然后再显示应用自己的订单支付确认页面。</p>
 <hr>
@@ -338,7 +338,7 @@
 </ol>
 <p>我们有两种方式来处理支付：我们可以利用支付平台来处理支付，或者我们自己实现支付处理过程。一个支付处理平台基本上就能完成上述的大部分操作。</p>
 <p>要读取、验证和处理支付信息，就必须知道一部分密码学知识，比如计算SHA—1哈希表，读取和验证 PKCS#7 签名和Diffie-Hellman 椭圆曲线密钥交换。如果我们不具有这些密码学的知识背景，那么可以考虑使用第三方支付平台来完成这些操作。</p>
-<p>用来处理支付的信息是一种嵌套式的数据结构，支付 token 是一个 <code>PKPaymentToken</code> 类的实例。它的 <code>paymentData</code> 属性的值是一个 JSON 字典。这个 JSON 字典的 Header 包含用来验证支付信息和加密支付数据。加密的支付信息包含诸如订单总额、持卡人姓名和用来指定支付处理协议的其他信息。<br><img src="/images/payment_data_structure.png" alt="payment_data_structure" title="支付信息数据格式"></p>
+<p>用来处理支付的信息是一种嵌套式的数据结构，支付 token 是一个 <code>PKPaymentToken</code> 类的实例。它的 <code>paymentData</code> 属性的值是一个 JSON 字典。这个 JSON 字典的 Header 包含用来验证支付信息和加密支付数据。加密的支付信息包含诸如订单总额、持卡人姓名和用来指定支付处理协议的其他信息。<br><img src="/images/apple_pay/payment_data_structure.png" alt="payment_data_structure" title="支付信息数据格式"></p>
 <h1 id="相关知识文档"><a href="#相关知识文档" class="headerlink" title="相关知识文档"></a>相关知识文档</h1><p><a href="https://developer.apple.com/library/ios/ApplePay_Guide/" target="_blank" rel="external">Apple Pay Programming Guide</a></p>
 <p><a href="https://developer.apple.com/videos/wwdc/2015/?id=702" target="_blank" rel="external">WWDC 2015 Apple Pay Within Apps</a></p>
 <p><a href="https://developer.apple.com/apple-pay/Getting-Started-with-Apple-Pay.pdf" target="_blank" rel="external">Getting Started With Apple Pay</a></p>

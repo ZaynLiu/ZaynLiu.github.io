@@ -84,23 +84,27 @@
 
 
 
-<meta name="description" content="最近购买了一个Linode的VPS，第一次在Linode上面搭建VPN服务，怕以后忘记，在这里记录一下。
-购买Linode服务创建一个 Linode 帐户首先需要在 Linode 的官网注册一个帐户Create an account，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。
-之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行">
+<meta name="description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
+本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Linode上搭建VPN服务">
 <meta property="og:url" content="http://yoursite.com/2016/08/11/在linode上搭建VPN服务/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="最近购买了一个Linode的VPS，第一次在Linode上面搭建VPN服务，怕以后忘记，在这里记录一下。
-购买Linode服务创建一个 Linode 帐户首先需要在 Linode 的官网注册一个帐户Create an account，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。
-之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行">
+<meta property="og:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
+本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
 <meta property="og:image" content="http://yoursite.com/images/add_a_linode.png">
-<meta property="og:updated_time" content="2016-08-11T03:55:27.000Z">
+<meta property="og:image" content="http://yoursite.com/images/linode/rebuild_tap.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/rebuild_ubuntu.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/rebuild_wait.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/boot.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/system_running.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/ssh_root.png">
+<meta property="og:image" content="http://yoursite.com/images/linode/welcome_ubuntu.png">
+<meta property="og:updated_time" content="2016-08-11T08:19:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linode上搭建VPN服务">
-<meta name="twitter:description" content="最近购买了一个Linode的VPS，第一次在Linode上面搭建VPN服务，怕以后忘记，在这里记录一下。
-购买Linode服务创建一个 Linode 帐户首先需要在 Linode 的官网注册一个帐户Create an account，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。
-之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行">
+<meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
+本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
 <meta name="twitter:image" content="http://yoursite.com/images/add_a_linode.png">
 
 
@@ -284,11 +288,46 @@
       
 
       
-        <p>最近购买了一个Linode的VPS，第一次在Linode上面搭建VPN服务，怕以后忘记，在这里记录一下。</p>
-<h1 id="购买Linode服务"><a href="#购买Linode服务" class="headerlink" title="购买Linode服务"></a>购买Linode服务</h1><h2 id="创建一个-Linode-帐户"><a href="#创建一个-Linode-帐户" class="headerlink" title="创建一个 Linode 帐户"></a>创建一个 Linode 帐户</h2><p>首先需要在 Linode 的官网注册一个帐户<a href="https://manager.linode.com/session/signup" target="_blank" rel="external">Create an account</a>，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。</p>
+        <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。</p>
+<p>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。<br><a id="more"></a></p>
+<p>好了，准备姿势介绍了，下面正式开始科学上网步骤</p>
+<hr>
+<h1 id="配置-Linode-服务器"><a href="#配置-Linode-服务器" class="headerlink" title="配置 Linode 服务器"></a>配置 Linode 服务器</h1><h2 id="创建一个-Linode-帐户"><a href="#创建一个-Linode-帐户" class="headerlink" title="创建一个 Linode 帐户"></a>创建一个 Linode 帐户</h2><p>首先需要在 Linode 的官网注册一个帐户<a href="https://manager.linode.com/session/signup" target="_blank" rel="external">Create an account</a>，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。</p>
 <p>之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行了。</p>
-<a id="more"></a>
 <p>然后选择一个付费计划和服务器，听朋友和网上说东京的服务器是最快的，但是我注册的时候没有找到，所以我选择了新加坡的，速度还可以。<br><img src="/images/add_a_linode.png" alt="add_a_linode" title="选择付费计划和服务器"></p>
+<h2 id="创建远程的-Images"><a href="#创建远程的-Images" class="headerlink" title="创建远程的 Images"></a>创建远程的 Images</h2><p>在完成 Linode 的创建以后，进入你的 Linode 页面，在该页面的 Dashboard 这个 Tab 中点击 Rebuild 按钮。<br><img src="/images/linode/rebuild_tap.png" alt="rebuild_tap" title="在Dashborad中点击Rebuild"></p>
+<p>在 Rebuild 页面，Distribution 中选择操作系统，我选择的是 Ubuntu 14.04，并设置好 Disk Size 和 Root 密码，设置完成后点击 Rebuild 按钮。<br><img src="/images/linode/rebuild_ubuntu.png" alt="rebuild_ubuntu" title="创建Ubuntu系统"></p>
+<p>Rebuild 完成之后会出现这个页面，稍微等待一下系统完成创建。<br><img src="/images/linode/rebuild_wait.png" alt="rebuild_wait" title="正在创建系统文件"></p>
+<h2 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h2><p>等到每一项都显示 Success 之后，就可以点击 Boot 启动系统了。（忘记截图，图片是网上找的，侵删）<br><img src="/images/linode/boot.png" alt="boot" title="启动服务器"></p>
+<p>Boot 完成后，在页面的右边服务器的状态 Server Status 会从 Powered Off 变为 Running。<br><img src="/images/linode/system_running.png" alt="system_running" title="服务器运行成功"></p>
+<hr>
+<h1 id="对系统进行远程操作，搭建-VPN"><a href="#对系统进行远程操作，搭建-VPN" class="headerlink" title="对系统进行远程操作，搭建 VPN"></a>对系统进行远程操作，搭建 VPN</h1><h2 id="用终端远程操作"><a href="#用终端远程操作" class="headerlink" title="用终端远程操作"></a>用终端远程操作</h2><p>在 Linodes 页面中点击 Remote Access 这个 Tab，然后点击 ssh root 地址，你的 Mac 终端应用应该会启动了，这时输入你之前设置的 Root 密码，进入远端 Ubuntu 系统，终端显示 Welcome to Ubuntu 表示成功进入。<br><img src="/images/linode/ssh_root.png" alt="ssh_root" title="点击ssh启动终端"><br><img src="/images/linode/welcome_ubuntu.png" alt="welcome_ubuntu" title="进入Ubuntu"></p>
+<h2 id="安装-PPTP-服务"><a href="#安装-PPTP-服务" class="headerlink" title="安装 PPTP 服务"></a>安装 PPTP 服务</h2><p>因为服务器系统已经是 Ubuntu 了，所以我们可以直接开始在终端输入命令。</p>
+<p>更新<br><code>apt-get update</code></p>
+<p>安装 PPTP<br><code>apt-get install pptpd</code></p>
+<h2 id="配置-PPTP"><a href="#配置-PPTP" class="headerlink" title="配置 PPTP"></a>配置 PPTP</h2><p>安装完成之后，我们需要对 PPTP 的配置进行一些修改</p>
+<p>用 Vim 编辑 PPTP 的配置文件<br><code>vim /etc/pptpd.conf</code></p>
+<p>找到我们需要修改的 localip 和 remoteip，remoteip指的是将来分配给VPN Client的IP，localip则是将来VPN Client看到的远端地址。在conf文件中找到它们：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#localip 192.168.0.1</div><div class="line">#remoteip 192.168.0.234-238,192.168.0.245</div></pre></td></tr></table></figure></p>
+<p>将它们的#号去掉，修改为下面这样：（在 Vim 中 insert输入小写 i）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip 192.168.217.1</div><div class="line">remoteip 192.168.217.234-238,192.168.217.245</div></pre></td></tr></table></figure></p>
+<p>或者改成：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip 192.168.0.1</div><div class="line">remoteip 192.168.0.100-200</div></pre></td></tr></table></figure></p>
+<p>然后保存并退出（Vim insert 状态下按 esc 键，然后输入“:wq”来保存退出）</p>
+<h2 id="添加-PPTP-VPN-用户"><a href="#添加-PPTP-VPN-用户" class="headerlink" title="添加 PPTP VPN 用户"></a>添加 PPTP VPN 用户</h2><p>为你的 VPN 添加用户:<br><code>vim /etc/ppp/chap-secrets</code></p>
+<p>这个文件中有四列 client、server、 secret、IP addresses，分别是你 PPTP 上面的帐号名、服务器、密码、IP地址；帐户就填写之后你 VPN 登录时想要使用的用户名，server是 PPTP，填 <em> 也可以，secret 填写密码，IP地址填写 </em> 即可，服务器会自行分配。<br>例如填写：<code>admin pptp 123 *</code> （每一列用空格分开）<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#client    server  secret      IP addresses</div><div class="line">admin pptp 123 *</div></pre></td></tr></table></figure></p>
+<h2 id="修改-DNS"><a href="#修改-DNS" class="headerlink" title="修改 DNS"></a>修改 DNS</h2><p>编辑 /etc/ppp/options<br><code>vim /etc/ppp/options</code><br>找到ms-dns，删除前面注释的#号，修改为下面这样：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ms-dns 8.8.8.8</div><div class="line">ms-dns 8.8.4.4</div></pre></td></tr></table></figure></p>
+<h2 id="打开-IPv4-转发"><a href="#打开-IPv4-转发" class="headerlink" title="打开 IPv4 转发"></a>打开 IPv4 转发</h2><p>编辑 /etc/sysctl.conf 文件<br><code>vim /etc/sysctl.conf</code><br>找到net.ipv4.ip_forward=1，去掉前面的#号注释：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net.ipv4.ip_forward=1</div></pre></td></tr></table></figure></p>
+<p>执行下面的命令，使转发配置生效<br><code>sysctl -p</code></p>
+<h2 id="重启-PPTP-服务"><a href="#重启-PPTP-服务" class="headerlink" title="重启 PPTP 服务"></a>重启 PPTP 服务</h2><p>配置完成之后需要重启 PPTP 来使配置生效<br><code>/etc/init.d/pptpd restart</code></p>
+<h2 id="安装-iptables"><a href="#安装-iptables" class="headerlink" title="安装 iptables"></a>安装 iptables</h2><p>此时你的 VPN 就可以工作了，Client 已经可以建立到 Server 的 VPN 连接，并且访问 Server 的资源了。但是因为没有建立从 VPN 到 Internet 的路由，所以 Client 是无法通过 VPN 访问 Internet 的，所以需要通过设置路由规则来解决。要设置路由规则，需要先安装 iptables，执行下面的命令：<br><code>apt-get install iptables</code></p>
+<h2 id="开启-iptables-转发"><a href="#开启-iptables-转发" class="headerlink" title="开启 iptables 转发"></a>开启 iptables 转发</h2><p>开启并设置 iptables 的转发规则，执行：<br><code>iptables -A FORWARD -s 192.168.217.0/24 -j ACCEPT</code><br><code>iptables -t nat -A POSTROUTING -s 192.168.217.0/24 -o eth0 -j MASQUERADE</code></p>
+<p>保存转发的规则，执行：<br><code>iptables-save &gt; /etc/iptables-rules</code></p>
+<h2 id="转发规则脚本"><a href="#转发规则脚本" class="headerlink" title="转发规则脚本"></a>转发规则脚本</h2><p>由于 iptables 转发规则会在设备重启后失效，那我们就需要一个脚本来让转发规则在每次重启之后再次生效<br>在/etc/network/if-up.d/目录下创建iptables文件，执行：<br><code>vim /etc/network/if-up.d/ new iptables</code></p>
+<p>创建完成后编辑该文件，执行：<br><code>vim /etc/network/if-up.d/iptables</code></p>
+<p>添加如下内容，然后保存并退出：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">iptables-restore &lt; /etc/iptables.pptp</div></pre></td></tr></table></figure></p>
+<p>脚本编辑完成后，需要给脚本添加执行权限，执行：<br><code>chmod +x /etc/network/if-up.d/iptables</code></p>
+<p>至此，我们在 Linode 上的 PPTP VPN 服务器就配置完成了，接下来就可以科学上网了！</p>
+<hr>
+<h1 id="科学上网姿势"><a href="#科学上网姿势" class="headerlink" title="科学上网姿势"></a>科学上网姿势</h1><p>VPN 的连接就不多说了，网上一搜一大把，但是需要特别注意的是在 macOS 和 iOS 系统中，在连接 VPN 时，<strong>一定要勾选上 “接收发送所有流量”选项</strong>，否则 VPN 还是不能科学上网。macOS 在 VPN “高级…”中勾选，iOS 在创建 VPN 时勾选。</p>
+<p>OK ~ that’s all, hope you guys enjoy!</p>
 
       
     </div>
@@ -440,7 +479,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#购买Linode服务"><span class="nav-number">1.</span> <span class="nav-text">购买Linode服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个-Linode-帐户"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个 Linode 帐户</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-Linode-服务器"><span class="nav-number">1.</span> <span class="nav-text">配置 Linode 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个-Linode-帐户"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个 Linode 帐户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建远程的-Images"><span class="nav-number">1.2.</span> <span class="nav-text">创建远程的 Images</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务器"><span class="nav-number">1.3.</span> <span class="nav-text">启动服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对系统进行远程操作，搭建-VPN"><span class="nav-number">2.</span> <span class="nav-text">对系统进行远程操作，搭建 VPN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用终端远程操作"><span class="nav-number">2.1.</span> <span class="nav-text">用终端远程操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-PPTP-服务"><span class="nav-number">2.2.</span> <span class="nav-text">安装 PPTP 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-PPTP"><span class="nav-number">2.3.</span> <span class="nav-text">配置 PPTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-PPTP-VPN-用户"><span class="nav-number">2.4.</span> <span class="nav-text">添加 PPTP VPN 用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-DNS"><span class="nav-number">2.5.</span> <span class="nav-text">修改 DNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-IPv4-转发"><span class="nav-number">2.6.</span> <span class="nav-text">打开 IPv4 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启-PPTP-服务"><span class="nav-number">2.7.</span> <span class="nav-text">重启 PPTP 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-iptables"><span class="nav-number">2.8.</span> <span class="nav-text">安装 iptables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-iptables-转发"><span class="nav-number">2.9.</span> <span class="nav-text">开启 iptables 转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转发规则脚本"><span class="nav-number">2.10.</span> <span class="nav-text">转发规则脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#科学上网姿势"><span class="nav-number">3.</span> <span class="nav-text">科学上网姿势</span></a></li></ol></div>
             
           </div>
         </section>

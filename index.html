@@ -281,9 +281,8 @@
 
       
         
-          <p>最近购买了一个Linode的VPS，第一次在Linode上面搭建VPN服务，怕以后忘记，在这里记录一下。</p>
-<h1 id="购买Linode服务"><a href="#购买Linode服务" class="headerlink" title="购买Linode服务"></a>购买Linode服务</h1><h2 id="创建一个-Linode-帐户"><a href="#创建一个-Linode-帐户" class="headerlink" title="创建一个 Linode 帐户"></a>创建一个 Linode 帐户</h2><p>首先需要在 Linode 的官网注册一个帐户<a href="https://manager.linode.com/session/signup">Create an account</a>，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。</p>
-<p>之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行了。</p>
+          <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。</p>
+<p>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/11/在linode上搭建VPN服务/#more" rel="contents">
               阅读全文 &raquo;
