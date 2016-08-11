@@ -84,15 +84,13 @@
 
 
 
-<meta name="description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
-本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
+<meta name="description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Linode上搭建VPN服务">
 <meta property="og:url" content="http://yoursite.com/2016/08/11/在linode上搭建VPN服务/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
-本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
-<meta property="og:image" content="http://yoursite.com/images/add_a_linode.png">
+<meta property="og:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
+<meta property="og:image" content="http://yoursite.com/images/linode/add_a_linode.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/rebuild_tap.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/rebuild_ubuntu.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/rebuild_wait.png">
@@ -100,12 +98,11 @@
 <meta property="og:image" content="http://yoursite.com/images/linode/system_running.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/ssh_root.png">
 <meta property="og:image" content="http://yoursite.com/images/linode/welcome_ubuntu.png">
-<meta property="og:updated_time" content="2016-08-11T08:19:28.000Z">
+<meta property="og:updated_time" content="2016-08-11T08:26:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linode上搭建VPN服务">
-<meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。
-本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling">
-<meta name="twitter:image" content="http://yoursite.com/images/add_a_linode.png">
+<meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
+<meta name="twitter:image" content="http://yoursite.com/images/linode/add_a_linode.png">
 
 
 
@@ -288,13 +285,12 @@
       
 
       
-        <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。</p>
-<p>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。<br><a id="more"></a></p>
+        <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。<br><a id="more"></a><br>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。</p>
 <p>好了，准备姿势介绍了，下面正式开始科学上网步骤</p>
 <hr>
 <h1 id="配置-Linode-服务器"><a href="#配置-Linode-服务器" class="headerlink" title="配置 Linode 服务器"></a>配置 Linode 服务器</h1><h2 id="创建一个-Linode-帐户"><a href="#创建一个-Linode-帐户" class="headerlink" title="创建一个 Linode 帐户"></a>创建一个 Linode 帐户</h2><p>首先需要在 Linode 的官网注册一个帐户<a href="https://manager.linode.com/session/signup" target="_blank" rel="external">Create an account</a>，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。</p>
 <p>之后你会收到一封确认邮件，来激活帐户，这里不做过多的说明了，按照步骤走就行了。</p>
-<p>然后选择一个付费计划和服务器，听朋友和网上说东京的服务器是最快的，但是我注册的时候没有找到，所以我选择了新加坡的，速度还可以。<br><img src="/images/add_a_linode.png" alt="add_a_linode" title="选择付费计划和服务器"></p>
+<p>然后选择一个付费计划和服务器，听朋友和网上说东京的服务器是最快的，但是我注册的时候没有找到，所以我选择了新加坡的，速度还可以。<br><img src="/images/linode/add_a_linode.png" alt="add_a_linode" title="选择付费计划和服务器"></p>
 <h2 id="创建远程的-Images"><a href="#创建远程的-Images" class="headerlink" title="创建远程的 Images"></a>创建远程的 Images</h2><p>在完成 Linode 的创建以后，进入你的 Linode 页面，在该页面的 Dashboard 这个 Tab 中点击 Rebuild 按钮。<br><img src="/images/linode/rebuild_tap.png" alt="rebuild_tap" title="在Dashborad中点击Rebuild"></p>
 <p>在 Rebuild 页面，Distribution 中选择操作系统，我选择的是 Ubuntu 14.04，并设置好 Disk Size 和 Root 密码，设置完成后点击 Rebuild 按钮。<br><img src="/images/linode/rebuild_ubuntu.png" alt="rebuild_ubuntu" title="创建Ubuntu系统"></p>
 <p>Rebuild 完成之后会出现这个页面，稍微等待一下系统完成创建。<br><img src="/images/linode/rebuild_wait.png" alt="rebuild_wait" title="正在创建系统文件"></p>

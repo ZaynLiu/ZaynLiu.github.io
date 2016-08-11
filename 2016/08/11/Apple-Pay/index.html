@@ -84,26 +84,20 @@
 
 
 
-<meta name="description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。
-关于 Apple Payapple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。
-使用 Apple Pay 的 APP">
+<meta name="description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apple Pay">
 <meta property="og:url" content="http://yoursite.com/2016/08/11/Apple-Pay/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。
-关于 Apple Payapple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。
-使用 Apple Pay 的 APP">
+<meta property="og:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。">
 <meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_intro.png">
 <meta property="og:image" content="http://yoursite.com/images/apple_pay/enable_apple_pay.png">
 <meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_process.png">
 <meta property="og:image" content="http://yoursite.com/images/apple_pay/payment_data_structure.png">
-<meta property="og:updated_time" content="2016-08-11T06:25:18.000Z">
+<meta property="og:updated_time" content="2016-08-11T08:27:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apple Pay">
-<meta name="twitter:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。
-关于 Apple Payapple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。
-使用 Apple Pay 的 APP">
+<meta name="twitter:description" content="这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的Apple Pay Programming Guide后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。">
 <meta name="twitter:image" content="http://yoursite.com/images/apple_pay/payment_intro.png">
 
 
@@ -287,10 +281,9 @@
       
 
       
-        <p>这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的<a href="https://developer.apple.com/library/ios/ApplePay_Guide/" target="_blank" rel="external">Apple Pay Programming Guide</a>后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。</p>
+        <p>这篇文章是我今年1月为项目支持 Apple Pay 而参考苹果的<a href="https://developer.apple.com/library/ios/ApplePay_Guide/" target="_blank" rel="external">Apple Pay Programming Guide</a>后自己翻译整理的，能力一般水平有限，可能翻译得不是很到位，权当作是一个参考吧。<br><a id="more"></a></p>
 <h1 id="关于-Apple-Pay"><a href="#关于-Apple-Pay" class="headerlink" title="关于 Apple Pay"></a>关于 Apple Pay</h1><p>apple pay 是一种移动支付技术，它可以让用户将自己在现实生活中购物、享受服务的支付信息提供给我们，它是一种方便而且安全的支付方式。</p>
 <p>使用 Apple Pay 的 APP 需要在 Xcode 中打开 Apple Pay 功能，同时需要注册一个商户ID，并设置好加密密钥，这个密钥是用来将支付数据安全地发送到我们自己的服务器。</p>
-<a id="more"></a>
 <p><img src="/images/apple_pay/payment_intro.png" alt="payment_intro" title="支付流程"></p>
 <p>在开始一次支付时，APP 需要创建一个支付请求。这个支付请求不仅包含了已购买的服务或者商品的一些合计，同时也包含了税金、配送费或者是折扣等一些附加费用的信息。将这个请求传递给一个payment authorization view controller ，这个控制器将支付请求的信息显示出来，并提示用户一些必要信息，例如配送地址或者账单寄送地址。在用户与这个view controller 交互时，会调用delegate来更新支付请求。</p>
 <p>一旦用户对这次支付授权完成，Apple Pay 会将支付信息加密，以防止未授权的第三方来访问这些信息。在用户的设备上，Apple Pay 发送了一个支付请求到 Secure Element，SE 是在设备上专门保证安全的一块芯片。SE 会将用户指定银行卡信息和商户信息添加到支付请求中去，并且创建一个加密的支付 token 。然后将这个 token 发送到苹果服务器，苹果服务器会使用我们提供的商户ID证书将支付请求再次加密。最后服务器会将这个请求返回到应用中来进行后续的操作。苹果服务器不会访问或者保存支付 token，服务器只是简单的将 token 用开发者的证书再次加密。</p>
