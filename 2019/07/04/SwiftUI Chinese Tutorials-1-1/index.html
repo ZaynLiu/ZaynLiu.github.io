@@ -133,7 +133,7 @@
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/a.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/b.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/c.png">
-<meta property="og:updated_time" content="2019-07-04T09:28:12.527Z">
+<meta property="og:updated_time" content="2019-07-04T09:35:48.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View">
 <meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
@@ -411,10 +411,10 @@
 <p>为了布局这些视图，<em>Landmarks</em> 使用了<em>stacks</em> 来把 image view 和 text view 件组合并起来并分层。当需要添加一个 map view 到视图中时，你需要把一个标准的 MapKit 组建包含到工程中。为了让你精简视图设计，Xcode提供了实时反馈，所以你就能看到它们的变化是如何转换到代码中去的了。</p>
 <p><a href="https://docs-assets.developer.apple.com/published/50c9bfbf52/CreatingAndCombiningViews.zip" target="_blank" rel="external"> 下载项目文件 </a>来开始创建这个工程，并按照下面的步骤开始动手吧。</p>
 <hr>
-<h2 id="第一节：创建新工程并探索画布"><a href="#第一节：创建新工程并探索画布" class="headerlink" title="第一节：创建新工程并探索画布"></a>第一节：创建新工程并探索画布</h2><p>创建一个新的Xcode工程并使用SwiftUI（在创建工程时勾选上SwiftUI选项，这里我就不放视频了）。探索一下画（Canvas）功能、预览（Preview）功能和SwiftUI实例代码。<br><img src="/images/SwiftUI/part1/archive1/section1/section1.gif" alt="section1"><br> 如果要在Xcode上预览画布中的视图并与之交互，则需要保证你的Mac运行了macOS 10.15 beta 版本的系统（低于这个版本就只能写代码，不能使用预览）。</p>
-<h3 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step1.png" alt="step1"><br>打开Xcode，在启动界面中点击 <strong>Create a new Xcode project</strong>，或者在顶部的工具栏中选择 <strong>File &gt; New &gt; Project</strong>。</p>
-<h3 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step2.png" alt="step2"><br>在模板选择器中，选择 iOS 作为开发的平台，选择 <strong>Single View App</strong> 模板，然后点击 <strong>Next</strong>。</p>
-<h3 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step3.png" alt="step3"><br>输入”Landmarks”作为新工程的名称，把 <strong>Use SwiftUI</strong> 复选框的勾勾打上，然后点击 <strong>Next</strong> 。在你的 Mac 上选择一个路径存放这个 Landmarks 工程。</p>
+<h2 id="第一节：创建新工程并探索画布"><a href="#第一节：创建新工程并探索画布" class="headerlink" title="第一节：创建新工程并探索画布"></a>第一节：创建新工程并探索画布</h2><p>创建一个新的Xcode工程并使用SwiftUI（在创建工程时勾选上SwiftUI选项，这里我就不放视频了）。探索一下画（Canvas）功能、预览（Preview）功能和 SwiftUI 实例代码。<br><img src="/images/SwiftUI/part1/archive1/section1/section1.gif" alt="section1"><br> 如果要在 Xcode 上预览画布中的视图并与之交互，则需要保证你的 Mac 运行了 macOS 10.15 beta 版本的系统（低于这个版本就只能写代码，不能使用预览）。</p>
+<h3 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h3><p>打开 Xcode，在启动界面中点击 <strong>Create a new Xcode project</strong>，或者在顶部的工具栏中选择 <strong>File &gt; New &gt; Project</strong>。<br><img src="/images/SwiftUI/part1/archive1/section1/step1.png" alt="step1"></p>
+<h3 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h3><p>在模板选择器中，选择 iOS 作为开发的平台，选择 <strong>Single View App</strong> 模板，然后点击 <strong>Next</strong>。<br><img src="/images/SwiftUI/part1/archive1/section1/step2.png" alt="step2"></p>
+<h3 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h3><p>输入”Landmarks”作为新工程的名称，把 <strong>Use SwiftUI</strong> 复选框的勾勾打上，然后点击 <strong>Next</strong> 。在你的 Mac 上选择一个路径存放这个 Landmarks 工程。<br><img src="/images/SwiftUI/part1/archive1/section1/step3.png" alt="step3"></p>
 <h3 id="第4步"><a href="#第4步" class="headerlink" title="第4步"></a>第4步</h3><p>在项目工程导航栏中，点击选择 <code>ContentView.swift</code> 这个文件。<br><img src="/images/SwiftUI/part1/archive1/section1/step4.png" alt="step4"></p>
 <blockquote>
 <p>默认情况下，SwiftUI View 文件会声明两个结构体。第一个结构体遵循 View 协议，同时它描述了视图的内容和布局。第二个结构体为这个视图声明了预览内容。</p>
