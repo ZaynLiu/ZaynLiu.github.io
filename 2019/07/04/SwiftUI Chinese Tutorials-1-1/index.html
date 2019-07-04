@@ -53,16 +53,14 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=5.1.4">
 
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -82,7 +80,7 @@
 <meta name="description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View">
-<meta property="og:url" content="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-1/index.html">
+<meta property="og:url" content="https://zaynliu.github.io/2019/07/04/SwiftUI Chinese Tutorials-1-1/index.html">
 <meta property="og:site_name" content="ZaynLiu">
 <meta property="og:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/archive1.png">
@@ -135,7 +133,7 @@
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/a.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/b.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/c.png">
-<meta property="og:updated_time" content="2019-07-04T07:31:44.439Z">
+<meta property="og:updated_time" content="2019-07-04T07:49:59.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View">
 <meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
@@ -169,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-1/"/>
+  <link rel="canonical" href="https://zaynliu.github.io/2019/07/04/SwiftUI Chinese Tutorials-1-1/"/>
 
 
 
@@ -302,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-1/">
+    <link itemprop="mainEntityOfPage" href="https://zaynliu.github.io/2019/07/04/SwiftUI Chinese Tutorials-1-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhen Hui">
@@ -331,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T15:49:37+08:00">
-                2019-07-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T20:49:37+08:00">
+                2019-07-04
               </time>
             
 
@@ -372,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/03/SwiftUI Chinese Tutorials-1-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/07/03/SwiftUI Chinese Tutorials-1-1/" itemprop="commentCount"></span>
+                <a href="/2019/07/04/SwiftUI Chinese Tutorials-1-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/07/04/SwiftUI Chinese Tutorials-1-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,8 +401,9 @@
       
         <p>今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。<br>我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。<br><a id="more"></a></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于我也是一边学习 SwiftUI 一边翻译，我会尽量在“说人话”和“严谨贴合原文”之间找到一个平衡，时不时也会穿插我自己的看法和理解。教程中有翻译不对或者我理解有偏差的地方还请见谅，谢谢~<br>我无法保证不烂尾，毕竟这是我业余时间完成的，但我会尽快在短时间内翻译完成。</p>
-<p>原文中很多地方有代码和预览，能够帮助很好的理解，我在这边翻译的过程中就不直接贴代码了，以截图的方式展现。根据原文，教程分为四个大的部分：（一）SwiftUI 要领、（二）绘制和动画、（三）应用设计和布局、（四）框架集成</p>
+<p>原文中很多地方有代码和预览，能够帮助很好的理解，我在这边翻译的过程中就不直接贴代码了，以截图的方式展现。根据原文，教程分为四大部分：<br>（一）SwiftUI 要领<br>（二）绘制和动画<br>（三）应用设计和布局<br>（四）框架集成</p>
 <p>下面我们正式开始</p>
+<hr>
 <h1 id="SwiftUI-要领-第一章：创建并组合-View"><a href="#SwiftUI-要领-第一章：创建并组合-View" class="headerlink" title="SwiftUI 要领 - 第一章：创建并组合 View"></a>SwiftUI 要领 - 第一章：创建并组合 View</h1><p><font size="6">Creating and Combining Views</font><br><img src="/images/SwiftUI/part1/archive1/archive1.png" alt="archive1"><br>本教程将会通过引导你构建一个叫做 <em>Landmarks</em> 的应用来熟悉 SwiftUI 。<em>Landmakrs</em> 是一个可以发现和分享你喜欢的地点的 iOS 应用。你将通过创建展示地标详情的视图开始这段教程。</p>
 <p>为了布局这些视图，<em>Landmarks</em> 使用了<em>stacks</em> 来把图片视图组件和文案视图组件组合并起来并分层。要添加一个地图到视图中时，你需要把一个标准的 MapKit 组建包含到工程中。为了让你精简视图设计，Xcode提供了实时反馈，所以你可以看到它们的变化是如何转换到代码中去的。</p>
 <p><a href="https://docs-assets.developer.apple.com/published/50c9bfbf52/CreatingAndCombiningViews.zip" target="_blank" rel="external"> 下载项目文件 </a>来开始创建这个工程，并按照下面的步骤开始动手吧。</p>
@@ -591,7 +590,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/03/SwiftUI Chinese Tutorials-1-2/" rel="prev" title="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第二章：构建列表和导航">
+              <a href="/2019/07/04/SwiftUI Chinese Tutorials-1-2/" rel="prev" title="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第二章：构建列表和导航">
                 【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第二章：构建列表和导航 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -624,8 +623,8 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2019/07/03/SwiftUI Chinese Tutorials-1-1/"
-           data-title="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View" data-url="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-1/">
+      <div class="ds-thread" data-thread-key="2019/07/04/SwiftUI Chinese Tutorials-1-1/"
+           data-title="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View" data-url="https://zaynliu.github.io/2019/07/04/SwiftUI Chinese Tutorials-1-1/">
       </div>
     </div>
 
