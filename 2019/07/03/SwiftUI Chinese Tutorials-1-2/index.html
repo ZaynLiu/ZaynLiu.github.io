@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，并且把这些 view 通过不同的方式组合起来，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第二章：构建列表和导航">
 <meta property="og:url" content="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-2/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta property="og:description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，并且把这些 view 通过不同的方式组合起来，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive2/archive2.png">
-<meta property="og:updated_time" content="2019-07-04T06:49:09.626Z">
+<meta property="og:updated_time" content="2019-07-04T07:14:13.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第二章：构建列表和导航">
-<meta name="twitter:description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="twitter:description" content="前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，并且把这些 view 通过不同的方式组合起来，接下来我们将学习如何构建列表视图以及完成导航相关的操作。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
 <meta name="twitter:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive2/archive2.png">
 
 
@@ -352,7 +352,7 @@
       
 
       
-        <p>前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，接下来我们将学习如何构建列表视图以及完成导航相关的操作。<br>我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。<br><a id="more"></a></p>
+        <p>前一章我们学习了如果创建自定义视图，以及通过各种工具修饰 view，并且把这些 view 通过不同的方式组合起来，接下来我们将学习如何构建列表视图以及完成导航相关的操作。<br>我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。<br><a id="more"></a></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>pending…</p>
 <h1 id="SwiftUI-要领-第二章：构建列表和导航"><a href="#SwiftUI-要领-第二章：构建列表和导航" class="headerlink" title="SwiftUI 要领 - 第二章：构建列表和导航"></a>SwiftUI 要领 - 第二章：构建列表和导航</h1><p><font size="6">Building Lists and Navigation</font><br><img src="/images/SwiftUI/part1/archive2/archive2.png" alt="archive2"><br>在基础的地标详情视图完成后，你还需要以列表的方式让用户浏览所有的地标，并且还要让用户能查看每个位置信息的详情。</p>
 <p>你需要创建一个能够展示地标信息的 view，并且还要动态地生成一个可以滑动的列表，让用户点击地标时可以去查看地标的详情 view。为了把 UI 调整得恰到好处，你将要使用 Xcode 的画布去渲染多个不同尺寸设备的预览。</p>

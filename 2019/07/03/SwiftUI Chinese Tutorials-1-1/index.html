@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View">
 <meta property="og:url" content="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials-1-1/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta property="og:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/archive1.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/section1.gif">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step1.png">
@@ -135,10 +135,10 @@
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/a.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/b.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/c.png">
-<meta property="og:updated_time" content="2019-07-04T06:37:53.946Z">
+<meta property="og:updated_time" content="2019-07-04T07:31:44.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【SwiftUI Tutorials 中文翻译】SwiftUI 要领 - 第一章：创建并组合 View">
-<meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。">
 <meta name="twitter:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/archive1.png">
 
 
@@ -401,7 +401,7 @@
       
 
       
-        <p>今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。<br>我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。<br><a id="more"></a></p>
+        <p>今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。<br>我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，但希望能够帮助到入门的开发者。<br><a id="more"></a></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于我也是一边学习 SwiftUI 一边翻译，我会尽量在“说人话”和“严谨贴合原文”之间找到一个平衡，时不时也会穿插我自己的看法和理解。教程中有翻译不对或者我理解有偏差的地方还请见谅，谢谢~<br>我无法保证不烂尾，毕竟这是我业余时间完成的，但我会尽快在短时间内翻译完成。</p>
 <p>原文中很多地方有代码和预览，能够帮助很好的理解，我在这边翻译的过程中就不直接贴代码了，以截图的方式展现。根据原文，教程分为四个大的部分：（一）SwiftUI 要领、（二）绘制和动画、（三）应用设计和布局、（四）框架集成</p>
 <p>下面我们正式开始</p>
@@ -521,8 +521,8 @@
 </blockquote>
 <h3 id="第7步-2"><a href="#第7步-2" class="headerlink" title="第7步"></a>第7步</h3><p>在最外层 <code>VStack</code> 的底部添加一个 spacer ，把整体内容推到屏幕顶部。<br><img src="/images/SwiftUI/part1/archive1/section6/step7.png" alt="step7"></p>
 <h3 id="第8步-1"><a href="#第8步-1" class="headerlink" title="第8步"></a>第8步</h3><p>最后，为了让 map 的内容可以伸展到紧贴屏幕上边缘，要在 map view 中添加一个 <code>IgnoringSafeArea(.top)</code> 的修饰器方法来忽略调 Safe Area 的上边距。<br><img src="/images/SwiftUI/part1/archive1/section6/step8.png" alt="step8"></p>
+<p>第一章到此结束，感谢你的阅读。<br> Have a nice day !!</p>
 <hr>
-<p>第一章到此结束。</p>
 <h1 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h1><p>测试一下，看看你有没有掌握</p>
 <p><strong>1.如果要创建一个自定义的 SwiftUI View，应该在哪里声明这个 view 的布局？</strong><br>a. 在这个 view 的初始化器中声明。<br>b. 在 <code>body</code> 属性中声明。<br>c. 在 <code>layoutSubviews()</code> 方法中声明。</p>
 <blockquote>
@@ -545,6 +545,12 @@
 <blockquote>
 <p>正确答案：c</p>
 </blockquote>
+<hr>
+<!--**Author**：这篇文章是辛苦劳作的成果，如果你觉得这篇文章还不错/对你有所帮助，那么可以请我喝一杯咖啡，这将会鼓励我产出更多作品，谢谢~-->
+<!--<div>-->
+<!--<img src='/images/admire/wechat.JPG' width=45% height=45%>-->
+<!--<img src='/images/admire/alipay.jpg' width=45% height=45%>-->
+<!--</div>-->
 
       
     </div>
