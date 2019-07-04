@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SwiftUI," />
 
 
 
@@ -79,40 +79,67 @@
 
 
 
-<meta name="description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的SwiftUI Tutorials自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SwiftUI Tutorials 中文翻译：（一）SwiftUI 要领">
+<meta property="og:title" content="【SwiftUI Tutorials 中文翻译】（一）SwiftUI 要领 - 第一章：创建并组合 View">
 <meta property="og:url" content="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的SwiftUI Tutorials自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step1.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step2.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step3.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step4.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step5.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step6.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/section2.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step1.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step2.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step3.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step4.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step5.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section2/step6.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/section3.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step1.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step2.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step3.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step4.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step5.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step6.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step7.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step8.png">
-<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section3/step9.png">
-<meta property="og:updated_time" content="2019-07-03T14:14:26.707Z">
+<meta property="og:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/archive1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/section1.gif">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step4.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section1/step6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/section2.gif">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step4.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section2/step6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/section3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step4.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step7.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step8.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section3/step9.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/section4.gif">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step4.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step7.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section5/section5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section4/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section5/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section5/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section5/step4.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section5/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/section6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step1.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step2.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step3.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step5.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step6.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step7.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/section6/step8.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/a.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/b.png">
+<meta property="og:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/practice/c.png">
+<meta property="og:updated_time" content="2019-07-04T06:26:26.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SwiftUI Tutorials 中文翻译：（一）SwiftUI 要领">
-<meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的SwiftUI Tutorials自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
-<meta name="twitter:image" content="https://zaynliu.github.io/images/SwiftUI/archive1/section1/step1.png">
+<meta name="twitter:title" content="【SwiftUI Tutorials 中文翻译】（一）SwiftUI 要领 - 第一章：创建并组合 View">
+<meta name="twitter:description" content="今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的 SwiftUI Tutorials 自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。">
+<meta name="twitter:image" content="https://zaynliu.github.io/images/SwiftUI/part1/archive1/archive1.png">
 
 
 
@@ -148,7 +175,7 @@
 
 
 
-  <title>SwiftUI Tutorials 中文翻译：（一）SwiftUI 要领 | ZaynLiu</title>
+  <title>【SwiftUI Tutorials 中文翻译】（一）SwiftUI 要领 - 第一章：创建并组合 View | ZaynLiu</title>
   
 
 
@@ -292,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SwiftUI Tutorials 中文翻译：（一）SwiftUI 要领</h1>
+          <h1 class="post-title" itemprop="name headline">【SwiftUI Tutorials 中文翻译】（一）SwiftUI 要领 - 第一章：创建并组合 View</h1>
         
 
         <div class="post-meta">
@@ -374,75 +401,150 @@
       
 
       
-        <p>今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external">SwiftUI Tutorials</a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。<br><a id="more"></a></p>
+        <p>今年的 WWDC 上，苹果带来了重磅更新——SwiftUI，作为一名iOS开发，已经被曾经 Apple 的 UI 开发方式折磨了很久，SwiftUI 对我们来说是一个好消息（更希望 SwiftUI 能把手伸到 Android 的口袋里）。我根据苹果的<a href="https://developer.apple.com/tutorials/swiftui" target="_blank" rel="external"> SwiftUI Tutorials </a>自己翻译整理这个教程，能力一般水平有限，可能翻译得不是很到位，希望能够帮助到入门的开发者。<br><a id="more"></a></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于我也是一边学习 SwiftUI 一边翻译，我会尽量在“说人话”和“严谨贴合原文”之间找到一个平衡，时不时也会穿插我自己的看法和理解。教程中有翻译不对或者我理解有偏差的地方还请见谅，谢谢~<br>我无法保证不烂尾，毕竟这是我业余时间完成的，但我会尽快在短时间内翻译完成。</p>
-<p>原文中很多地方有代码和预览，能够帮助很好的理解，我在这边翻译的过程中就不贴代码了，以截图的方式展现。根据原文，教程分为四个部分：（一）SwiftUI 要领、（二）绘制和动画、（三）应用设计和布局、（四）框架集成</p>
+<p>原文中很多地方有代码和预览，能够帮助很好的理解，我在这边翻译的过程中就不直接贴代码了，以截图的方式展现。根据原文，教程分为四个大的部分：（一）SwiftUI 要领、（二）绘制和动画、（三）应用设计和布局、（四）框架集成</p>
 <p>下面我们正式开始</p>
-<h1 id="SwiftUI-要领"><a href="#SwiftUI-要领" class="headerlink" title="SwiftUI 要领"></a>SwiftUI 要领</h1><font size="6">创建并组合View</font>
-
-<p>本教程将会通过引导你构建一个叫做 <em>Landmarks</em> 的应用来熟悉 SwiftUI 。<em>Landmakrs</em> 是一个可以发现和分享你喜欢的地点的 iOS 应用。你将通过创建展示地标详情的视图开始这段教程。</p>
-<p>为了布局这些视图，<em>Landmarks</em> 使用了<em>stacks</em> 来把图片视图组件和文案视图组件组合并起来并分层。要添加一个地图到视图中时，你需要把一个标准的 MapKit 组建包含到项目中。为了让你精简视图设计，Xcode提供了实时反馈，所以你可以看到它们的变化是如何转换到代码中去的。</p>
-<p>下载项目文件来开始构建这个项目，并按照下面的步骤开始动手吧。</p>
+<h1 id="SwiftUI-要领-第一章：创建并组合-View"><a href="#SwiftUI-要领-第一章：创建并组合-View" class="headerlink" title="SwiftUI 要领 - 第一章：创建并组合 View"></a>SwiftUI 要领 - 第一章：创建并组合 View</h1><p><font size="6">Creating and Combining Views</font><br><img src="/images/SwiftUI/part1/archive1/archive1.png" alt="archive1"><br>本教程将会通过引导你构建一个叫做 <em>Landmarks</em> 的应用来熟悉 SwiftUI 。<em>Landmakrs</em> 是一个可以发现和分享你喜欢的地点的 iOS 应用。你将通过创建展示地标详情的视图开始这段教程。</p>
+<p>为了布局这些视图，<em>Landmarks</em> 使用了<em>stacks</em> 来把图片视图组件和文案视图组件组合并起来并分层。要添加一个地图到视图中时，你需要把一个标准的 MapKit 组建包含到工程中。为了让你精简视图设计，Xcode提供了实时反馈，所以你可以看到它们的变化是如何转换到代码中去的。</p>
+<p><a href="https://docs-assets.developer.apple.com/published/50c9bfbf52/CreatingAndCombiningViews.zip" target="_blank" rel="external"> 下载项目文件 </a>来开始创建这个工程，并按照下面的步骤开始动手吧。</p>
 <hr>
-<h2 id="第一节：创建新项目并探索画布"><a href="#第一节：创建新项目并探索画布" class="headerlink" title="第一节：创建新项目并探索画布"></a>第一节：创建新项目并探索画布</h2><p>创建一个新的Xcode项目并使用SwiftUI（在创建时项目时勾选上SwiftUI选项，这里我就不放视频了）。探索一下画布、预览和SwiftUI实例代码。</p>
-<p> 要在Xcode上预览画布中的视图并与其交互，需要保证你的Mac运行了macOS 10.15 beta 版本的系统。</p>
-<h3 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h3><p><img src="/images/SwiftUI/archive1/section1/step1.png" alt="step1"><br>打开Xcode，在启动界面中点击 <strong>Create a new Xcode project</strong>，或者在顶部的工具栏中选择 <strong>File &gt; New &gt; Project</strong>。</p>
-<h3 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h3><p><img src="/images/SwiftUI/archive1/section1/step2.png" alt="step2"><br>在模板选择器中，选择 iOS 作为开发的平台，选择 <strong>Single View App</strong> 模板，然后点击 <strong>Next</strong>。</p>
-<h3 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h3><p><img src="/images/SwiftUI/archive1/section1/step3.png" alt="step3"><br>输入”Landmarks”作为新项目的名称，把 <strong>Use SwiftUI</strong> 复选框的勾勾打上，然后点击 <strong>Next</strong> 。在你的 Mac 上选择一个路径存放这个 Landmarks 项目。</p>
-<h3 id="第4步"><a href="#第4步" class="headerlink" title="第4步"></a>第4步</h3><p>在项目导航栏中，点击选择 <code>ContentView.swift</code> 这个文件。<br><img src="/images/SwiftUI/archive1/section1/step4.png" alt="step4"></p>
+<h2 id="第一节：创建新工程并探索画布"><a href="#第一节：创建新工程并探索画布" class="headerlink" title="第一节：创建新工程并探索画布"></a>第一节：创建新工程并探索画布</h2><p>创建一个新的Xcode工程并使用SwiftUI（在创建工程时勾选上SwiftUI选项，这里我就不放视频了）。探索一下画布、预览和SwiftUI实例代码。<br><img src="/images/SwiftUI/part1/archive1/section1/section1.gif" alt="section1"><br> 要在Xcode上预览画布中的视图并与其交互，需要保证你的Mac运行了macOS 10.15 beta 版本的系统。</p>
+<h3 id="第1步"><a href="#第1步" class="headerlink" title="第1步"></a>第1步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step1.png" alt="step1"><br>打开Xcode，在启动界面中点击 <strong>Create a new Xcode project</strong>，或者在顶部的工具栏中选择 <strong>File &gt; New &gt; Project</strong>。</p>
+<h3 id="第2步"><a href="#第2步" class="headerlink" title="第2步"></a>第2步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step2.png" alt="step2"><br>在模板选择器中，选择 iOS 作为开发的平台，选择 <strong>Single View App</strong> 模板，然后点击 <strong>Next</strong>。</p>
+<h3 id="第3步"><a href="#第3步" class="headerlink" title="第3步"></a>第3步</h3><p><img src="/images/SwiftUI/part1/archive1/section1/step3.png" alt="step3"><br>输入”Landmarks”作为新工程的名称，把 <strong>Use SwiftUI</strong> 复选框的勾勾打上，然后点击 <strong>Next</strong> 。在你的 Mac 上选择一个路径存放这个 Landmarks 工程。</p>
+<h3 id="第4步"><a href="#第4步" class="headerlink" title="第4步"></a>第4步</h3><p>在项目工程导航栏中，点击选择 <code>ContentView.swift</code> 这个文件。<br><img src="/images/SwiftUI/part1/archive1/section1/step4.png" alt="step4"></p>
 <blockquote>
-<p>默认情况下，SwiftUI 视图文件会声明两个结构体。第一个结构体遵循 View 协议，并且描述了视图的内容和布局。第二个结构体为这个视图声明了预览。</p>
+<p>默认情况下，SwiftUI View 文件会声明两个结构体。第一个结构体遵循 View 协议，并且描述了视图的内容和布局。第二个结构体为这个视图声明了预览。</p>
 </blockquote>
-<h3 id="第5步"><a href="#第5步" class="headerlink" title="第5步"></a>第5步</h3><p>在画布中，点击 <strong>Resume</strong> 来显示预览。<br><img src="/images/SwiftUI/archive1/section1/step5.png" alt="step5"></p>
+<h3 id="第5步"><a href="#第5步" class="headerlink" title="第5步"></a>第5步</h3><p>在画布中，点击 <strong>Resume</strong> 来显示预览。<br><img src="/images/SwiftUI/part1/archive1/section1/step5.png" alt="step5"></p>
 <blockquote>
 <p><font color="#2F948B"> 小提示 </font><br>如果画布没有显示出来，在顶部工具栏中选择 <strong>Editor &gt; Editor and Canvas</strong> 就能显示了。</p>
 </blockquote>
-<h3 id="第6步"><a href="#第6步" class="headerlink" title="第6步"></a>第6步</h3><p>在 <code>body</code> 属性中，把 “Hello World” 修改为对一句你自己问候。<br><img src="/images/SwiftUI/archive1/section1/step6.png" alt="step6"></p>
+<h3 id="第6步"><a href="#第6步" class="headerlink" title="第6步"></a>第6步</h3><p>在 <code>body</code> 属性中，把 “Hello World” 修改为对一句你自己问候。<br><img src="/images/SwiftUI/part1/archive1/section1/step6.png" alt="step6"></p>
 <blockquote>
 <p>当你在一个视图的 <code>body</code> 属性中修改代码时，预览会更新，把你的修改反映出来。</p>
 </blockquote>
 <h2 id="第二节：自定义-Text-View"><a href="#第二节：自定义-Text-View" class="headerlink" title="第二节：自定义 Text View"></a>第二节：自定义 Text View</h2><p>你可以通过修改你的代码来自定义一个视图的显示，或者使用 “inspector”（检查器） 来看看那些能够帮助你写代码功能，它们也可以用来自定义视图的显示。</p>
-<p>当你创建 Landmarks 应用时，你可以任意将下列编辑器组合起来使用：源码编辑、画布或者检查器。不论你选择了哪种工具，你的代码一直都会保持更新。<br><img src="/images/SwiftUI/archive1/section2/section2.png" alt="section2"></p>
+<p>当你创建 Landmarks 应用时，你可以任意将下列编辑器组合起来使用：源码编辑、画布或者检查器。不论你选择了哪种工具，你的代码一直都会保持更新。<br><img src="/images/SwiftUI/part1/archive1/section2/section2.gif" alt="section2"></p>
 <p>接下来，你将会使用检查器来自定义 text view。</p>
-<h3 id="第1步-1"><a href="#第1步-1" class="headerlink" title="第1步"></a>第1步</h3><p>在预览中，Command键+鼠标点击你之前写好的问候语来弹出结构化的编辑弹框，并且选择 <strong>inspect</strong>。<br><img src="/images/SwiftUI/archive1/section2/step1.png" alt="step1"></p>
+<h3 id="第1步-1"><a href="#第1步-1" class="headerlink" title="第1步"></a>第1步</h3><p>在预览中，Command键+鼠标点击你之前写好的问候语来弹出结构化的编辑弹框，并且选择 <strong>inspect</strong>。<br><img src="/images/SwiftUI/part1/archive1/section2/step1.png" alt="step1"></p>
 <blockquote>
 <p>这个弹框显示了一些不同的属性来让你编辑，这些属性取决于你所检查（inspect）的 view 的类型</p>
 </blockquote>
-<h3 id="第2步-1"><a href="#第2步-1" class="headerlink" title="第2步"></a>第2步</h3><p>使用检查器来修改 “Turtle Rock” 的文案，这将是展示在你应用中的第一个地标名称。<br><img src="/images/SwiftUI/archive1/section2/step2.png" alt="step2"></p>
-<h3 id="第3步-1"><a href="#第3步-1" class="headerlink" title="第3步"></a>第3步</h3><p>把字体修饰器的值改为 <strong>Title</strong>。<br><img src="/images/SwiftUI/archive1/section2/step3.png" alt="step3"></p>
+<h3 id="第2步-1"><a href="#第2步-1" class="headerlink" title="第2步"></a>第2步</h3><p>使用检查器来修改 “Turtle Rock” 的文案，这将是展示在你应用中的第一个地标名称。<br><img src="/images/SwiftUI/part1/archive1/section2/step2.png" alt="step2"></p>
+<h3 id="第3步-1"><a href="#第3步-1" class="headerlink" title="第3步"></a>第3步</h3><p>把字体修饰器的值改为 <strong>Title</strong>。<br><img src="/images/SwiftUI/part1/archive1/section2/step3.png" alt="step3"></p>
 <blockquote>
 <p>这将会把系统字体应用到 text 视图上，所以 text 能正确地对用户首选的字体和相关设置响应。</p>
 </blockquote>
-<h3 id="第4步-1"><a href="#第4步-1" class="headerlink" title="第4步"></a>第4步</h3><p>手动编辑代码来添加  <code>color(.green)</code> 修饰器；这将会把 text 视图的字体颜色变为绿色。<br><img src="/images/SwiftUI/archive1/section2/step4.png" alt="step4"></p>
+<h3 id="第4步-1"><a href="#第4步-1" class="headerlink" title="第4步"></a>第4步</h3><p>手动编辑代码来添加  <code>color(.green)</code> 修饰器；这将会把 text 视图的字体颜色变为绿色。<br><img src="/images/SwiftUI/part1/archive1/section2/step4.png" alt="step4"></p>
 <blockquote>
-<p>在自定义一个 SwiftUI 视图控件时，你调用的那些方法被称为 <em>modifiers</em>（修饰器）。修饰器是包装了修改一个 view 显示或其属性的方法。每一个修饰器方法都返回了一个新的 view，所以多个修饰器可以共同用链式的方式串起来，纵向排列。 </p>
+<p>在自定义一个 SwiftUI View 控件时，你调用的那些方法被称为 <em>modifiers</em>（修饰器）。修饰器是包装了修改一个 view 显示或其属性的方法。每一个修饰器方法都返回了一个新的 view，所以多个修饰器可以共同用链式的方式串起来，纵向排列。 </p>
 </blockquote>
 <p>你的代码一直都是 view 真正的来源，当你使用检查器修改或移除一个修饰器时，Xcode 会立刻更新你的代码来适配当前的修改。</p>
-<h3 id="第5步-1"><a href="#第5步-1" class="headerlink" title="第5步"></a>第5步</h3><p>现在，在代码编辑器中通过 Command + 鼠标点击 Text 的声明来打开检查器，并且在弹框中选择 <strong>Inspect</strong>。点击 <strong>Color</strong> 弹出菜单并选择 <strong>Inherited</strong> 来把 text 字体颜色修改回黑色。<br><img src="/images/SwiftUI/archive1/section2/step5.png" alt="step5"></p>
-<h3 id="第6步-1"><a href="#第6步-1" class="headerlink" title="第6步"></a>第6步</h3><p>要注意 Xcode 会自动更新你的代码来反映控件变化，现在 <code>color(.green)</code> 修饰器已经被移除了。<br><img src="/images/SwiftUI/archive1/section2/step6.png" alt="step6"></p>
+<h3 id="第5步-1"><a href="#第5步-1" class="headerlink" title="第5步"></a>第5步</h3><p>现在，在代码编辑器中通过 Command + 鼠标点击 Text 的声明来打开检查器，并且在弹框中选择 <strong>Inspect</strong>。点击 <strong>Color</strong> 弹出菜单并选择 <strong>Inherited</strong> 来把 text 字体颜色修改回黑色。<br><img src="/images/SwiftUI/part1/archive1/section2/step5.png" alt="step5"></p>
+<h3 id="第6步-1"><a href="#第6步-1" class="headerlink" title="第6步"></a>第6步</h3><p>要注意 Xcode 会自动更新你的代码来反映控件变化，现在 <code>color(.green)</code> 修饰器已经被移除了。<br><img src="/images/SwiftUI/part1/archive1/section2/step6.png" alt="step6"></p>
 <h2 id="第三节：使用-stack-来把-view-组合起来"><a href="#第三节：使用-stack-来把-view-组合起来" class="headerlink" title="第三节：使用 stack 来把 view 组合起来"></a>第三节：使用 stack 来把 view 组合起来</h2><p>除了你在前一节教程中创建的 view 之外，你还将添加另一些 text view 来显示地标的详情，例如公园的名称和它所在的州。</p>
 <p>当创建一个 SwiftUI view 时，你只需要描述它所包含的内容、布局以及它在该 view 的 <code>body</code> 属性中的行为；但是 <code>body</code> 属性只会返回单个 view。当多个 view 是水平成组、垂直成组或前后重叠成组的时候，你可以把多个 view 通过 <em>stack</em> 组合和嵌入在一起。</p>
-<p><img src="/images/SwiftUI/archive1/section3/section3.png" alt="section3"></p>
+<p><img src="/images/SwiftUI/part1/archive1/section3/section3.png" alt="section3"></p>
 <p>在本节教程中，你将会使用一个垂直的 stack 来把标题放置在一个水平的 stack 上方，这个水平的 stack 包含了公园的详情。</p>
 <p>你可以使用 Xcode 的结构化编辑支持功能将 view 嵌入到 view 容器当中，也可以打开一个检查器，或者来帮助你有效地完成其他修改。</p>
-<h3 id="第1步-2"><a href="#第1步-2" class="headerlink" title="第1步"></a>第1步</h3><p>用Command + 鼠标点击 text view 的初始化器，就能让结构化编辑弹窗显示出来，然后选择 <strong>Embed in VStack</strong>。<br><img src="/images/SwiftUI/archive1/section3/step1.png" alt="step1"></p>
+<h3 id="第1步-2"><a href="#第1步-2" class="headerlink" title="第1步"></a>第1步</h3><p>用Command + 鼠标点击 text view 的初始化器，就能让结构化编辑弹窗显示出来，然后选择 <strong>Embed in VStack</strong>。<br><img src="/images/SwiftUI/part1/archive1/section3/step1.png" alt="step1"></p>
 <p>紧接着，你将通过从视图控件库中拖拽一个 <code>Text</code> 视图的方式，添加一个 text view 到 stack 中去。</p>
-<h3 id="第2步-2"><a href="#第2步-2" class="headerlink" title="第2步"></a>第2步</h3><p>在 Xcode 窗口的右上角点击加号按钮 (+) 打开<em>视图控件库</em>，然后拖一个 <code>Text</code> 视图到你代码里，就放在 “Turtle Rock” text view的后面。<br><img src="/images/SwiftUI/archive1/section3/step2.png" alt="step2"></p>
-<h3 id="第3步-2"><a href="#第3步-2" class="headerlink" title="第3步"></a>第3步</h3><p>用 <strong>Joshua Tree National Park</strong> 替换掉 <code>Text</code> 视图的占位文案。<br><img src="/images/SwiftUI/archive1/section3/step3.png" alt="step3"></p>
+<h3 id="第2步-2"><a href="#第2步-2" class="headerlink" title="第2步"></a>第2步</h3><p>在 Xcode 窗口的右上角点击加号按钮 (+) 打开<em>视图控件库</em>，然后拖一个 <code>Text</code> 视图到你代码里，就放在 “Turtle Rock” text view的后面。<br><img src="/images/SwiftUI/part1/archive1/section3/step2.png" alt="step2"></p>
+<h3 id="第3步-2"><a href="#第3步-2" class="headerlink" title="第3步"></a>第3步</h3><p>用 <strong>Joshua Tree National Park</strong> 替换掉 <code>Text</code> 视图的占位文案。<br><img src="/images/SwiftUI/part1/archive1/section3/step3.png" alt="step3"></p>
 <p>接着，通过自定义公园的位置来匹配预想的布局</p>
-<h3 id="第4步-2"><a href="#第4步-2" class="headerlink" title="第4步"></a>第4步</h3><p>把公园的位置设置成 <code>subheadling</code> （副标题）。<br><img src="/images/SwiftUI/archive1/section3/step4.png" alt="step4"></p>
-<h3 id="第5步-2"><a href="#第5步-2" class="headerlink" title="第5步"></a>第5步</h3><p>编辑 <code>VStack</code> 初始化器来将它包含的视图控件左对齐。<br><img src="/images/SwiftUI/archive1/section3/step5.png" alt="step5"></p>
+<h3 id="第4步-2"><a href="#第4步-2" class="headerlink" title="第4步"></a>第4步</h3><p>把公园的位置设置成 <code>subheadling</code> （副标题）。<br><img src="/images/SwiftUI/part1/archive1/section3/step4.png" alt="step4"></p>
+<h3 id="第5步-2"><a href="#第5步-2" class="headerlink" title="第5步"></a>第5步</h3><p>编辑 <code>VStack</code> 初始化器来将它包含的视图控件左对齐。<br><img src="/images/SwiftUI/part1/archive1/section3/step5.png" alt="step5"></p>
 <blockquote>
 <p>默认地，stack 会把它的内容沿着轴线居中，并且提供适应上下文的合理边距。</p>
 </blockquote>
-<p>接下来，你将要把另一个 text view 添加到公园位置的右边，用来显示公园所在的州。</p>
-<h3 id="第6步-2"><a href="#第6步-2" class="headerlink" title="第6步"></a>第6步</h3><p>在画布中，用Command + 鼠标点击 <strong>Joshua Tree National Park</strong>，并选择 <strong>Embed in HStack</strong>。<br><img src="/images/SwiftUI/archive1/section3/step6.png" alt="step6"></p>
-<h3 id="第7步"><a href="#第7步" class="headerlink" title="第7步"></a>第7步</h3><p>在公园位置后面添加一个新的 text view，把它的占位文案替换为公园所在的州的名称，并且将这个 text view 的字体设置为 <code>subheadline</code>。<br><img src="/images/SwiftUI/archive1/section3/step7.png" alt="step7"></p>
-<h3 id="第8步"><a href="#第8步" class="headerlink" title="第8步"></a>第8步</h3><p>为了让视图的布局恰好可以充满设备屏幕的宽度，要在包含有水平的 stack 里添加 <code>Spacer</code> 来将公园和州名这两个 text view 分隔开。<br><img src="/images/SwiftUI/archive1/section3/step8.png" alt="step8"></p>
+<p>接下来，你将要把另一个 text view 添加到公园位置文案的右边，用来显示公园所在的州。</p>
+<h3 id="第6步-2"><a href="#第6步-2" class="headerlink" title="第6步"></a>第6步</h3><p>在画布中，用Command + 鼠标点击 <strong>Joshua Tree National Park</strong>，并选择 <strong>Embed in HStack</strong>。<br><img src="/images/SwiftUI/part1/archive1/section3/step6.png" alt="step6"></p>
+<h3 id="第7步"><a href="#第7步" class="headerlink" title="第7步"></a>第7步</h3><p>在位置文案后面添加一个新的 text view，把它的占位文案替换为公园所在的州的名称，并且将这个 text view 的字体设置为 <code>subheadline</code>。<br><img src="/images/SwiftUI/part1/archive1/section3/step7.png" alt="step7"></p>
+<h3 id="第8步"><a href="#第8步" class="headerlink" title="第8步"></a>第8步</h3><p>为了让视图的布局恰好可以充满设备屏幕的宽度，要在包含有水平的 stack 里添加 <code>Spacer</code> 来将公园和州名这两个 text view 分隔开。<br><img src="/images/SwiftUI/part1/archive1/section3/step8.png" alt="step8"></p>
 <blockquote>
 <p>一个 <em>spacer</em> 会让它包含的 view 撑满父控件的所有空间，而不是仅仅根据它包含的内容来定义其大小。</p>
 </blockquote>
-<h3 id="第9步"><a href="#第9步" class="headerlink" title="第9步"></a>第9步</h3><p>最后，使用 <code>padding()</code> 修饰器方法来给地标的名称、详情一点小小的空间，让它们不那么紧贴屏幕边缘。<br><img src="/images/SwiftUI/archive1/section3/step9.png" alt="step9"></p>
+<h3 id="第9步"><a href="#第9步" class="headerlink" title="第9步"></a>第9步</h3><p>最后，使用 <code>padding()</code> 修饰器方法来给地标的名称、详情一点小小的空间，让它们不那么紧贴屏幕边缘。<br><img src="/images/SwiftUI/part1/archive1/section3/step9.png" alt="step9"></p>
+<h2 id="第四节：创建一个自定义的-Image-View"><a href="#第四节：创建一个自定义的-Image-View" class="headerlink" title="第四节：创建一个自定义的 Image View"></a>第四节：创建一个自定义的 Image View</h2><p><img src="/images/SwiftUI/part1/archive1/section4/section4.gif" alt="section4"><br>地标名称和位置视图控件都已经设置好了，接下来要做的就是为地标添加一张图片。</p>
+<p>并不需要在文件中添加更多的代码，你只需要创建一个自定义的 view，并把 mask、border 和 shadow 应用在图片上就可以了。</p>
+<p>让我们从添加一张图片到工程的 asset 目录下开始。</p>
+<h3 id="第1步-3"><a href="#第1步-3" class="headerlink" title="第1步"></a>第1步</h3><p>从你下载的工程文件目录下的 <strong>Resource</strong> 文件夹中找到名为 <code>turtlerock.png</code> 的图片文件，把它拖放到 asset 目录的编辑器中去。Xcode 会为这张图片创建一个新的 image set（图集）。<br><img src="/images/SwiftUI/part1/archive1/section4/step1.png" alt="step1"></p>
+<p>现在，你要为自定义的 image view 创建一个新的 SwiftUI View。</p>
+<h3 id="第2步-3"><a href="#第2步-3" class="headerlink" title="第2步"></a>第2步</h3><p>在顶部工具栏中选择 <strong>File &gt; New &gt; File</strong> 来打开模板选择器。在 <strong>User Interface</strong> 分组中，点击选择 <strong>SwiftUI View</strong> ，然后点击 <strong>Next</strong>。把新的 SwiftUI View 文件命名为 <code>CircleImage.swift</code> 并点击 <strong>Create</strong> 创建文件。<br><img src="/images/SwiftUI/part1/archive1/section4/step2.png" alt="step2"></p>
+<p>此时你已经准备好了插入图片并修改它的显示方式来匹配之前预想好的设计。</p>
+<h3 id="第3步-3"><a href="#第3步-3" class="headerlink" title="第3步"></a>第3步</h3><p>使用 <code>Image(_:)</code> 初始化器来初始化 Turtle Rock 的图片，把占位的text view 替换掉。<br><img src="/images/SwiftUI/part1/archive1/section4/step3.png" alt="step3"></p>
+<h3 id="第4步-3"><a href="#第4步-3" class="headerlink" title="第4步"></a>第4步</h3><p>调用  <code>ClipShape(Circle())</code> 修饰器来把图片裁剪成圆形。</p>
+<blockquote>
+<p>在你使用 mask （遮罩）时，<code>Circle</code> 可以作为一种形状的类型，或者在你在使用 stroke （描边）或 fill （填充）时，<code>Circle</code>  可以形成一个圆形的 view。<br><img src="/images/SwiftUI/part1/archive1/section4/step4.png" alt="step4"></p>
+</blockquote>
+<h3 id="第5步-3"><a href="#第5步-3" class="headerlink" title="第5步"></a>第5步</h3><p>再创建一个灰色描边的圆形，然后把它用 overlay 覆盖到之前添加的图片上，来给图片形成一个边框的效果。<br><img src="/images/SwiftUI/part1/archive1/section4/step5.png" alt="step5"></p>
+<h3 id="第6步-3"><a href="#第6步-3" class="headerlink" title="第6步"></a>第6步</h3><p>接下来，为图片添加一个半径为 10pt 的阴影。<br><img src="/images/SwiftUI/part1/archive1/section4/step6.png" alt="step6"></p>
+<h3 id="第7步-1"><a href="#第7步-1" class="headerlink" title="第7步"></a>第7步</h3><p>把边框的颜色改为白色</p>
+<blockquote>
+<p>到这里就完成 image view 的自定义效果了。<br><img src="/images/SwiftUI/part1/archive1/section4/step7.png" alt="step7"></p>
+</blockquote>
+<h2 id="第五节：把-UIKit-和-SwiftUI-View-结合起来"><a href="#第五节：把-UIKit-和-SwiftUI-View-结合起来" class="headerlink" title="第五节：把 UIKit 和 SwiftUI View 结合起来"></a>第五节：把 UIKit 和 SwiftUI View 结合起来</h2><p>现在你已经做好创建一个 map view 的准备了。你可以使用 MapKit 中的 <code>MKMapView</code> 类来渲染一个地图控件。</p>
+<p><img src="/images/SwiftUI/part1/archive1/section5/section5.png" alt="section5"></p>
+<p>要在 SwiftUI 中使用 <code>UIView</code> 的子类时，你要把其它的 view 包装成一个遵循 <code>UIViewRepresentable</code> 协议的 SwiftUI View。SwiftUI 还包含了针对 <code>WatchKit</code> 和 <code>AppKit</code> 相关的协议。</p>
+<p>开始前，你要新创建一个能够呈现 <code>MKMapView</code> 的自定义 view。</p>
+<h3 id="第1步-4"><a href="#第1步-4" class="headerlink" title="第1步"></a>第1步</h3><p>在顶部工具栏中选择 <strong>File &gt; New &gt; File</strong> ，选择 <strong>iOS</strong> 平台，选择 <strong>SwiftUI View</strong> 模板，然后点击 <strong>Next</strong>。把新文件命名为 <code>MapView.swift</code> 并点击 <strong>Create</strong> 创建文件。<br><img src="/images/SwiftUI/part1/archive1/section4/step2.png" alt="step2"></p>
+<h3 id="第2步-4"><a href="#第2步-4" class="headerlink" title="第2步"></a>第2步</h3><p>导入 <code>MapKit</code>，并且声明 <code>MapKit</code> 类型遵循 <code>UIViewRepresentable</code> 协议。</p>
+<blockquote>
+<p>暂时不用管 Xcode 显示的报错，接下来几步你就能消除这些 error。<br><img src="/images/SwiftUI/part1/archive1/section5/step2.png" alt="step2"></p>
+</blockquote>
+<p>为了遵循 <code>UIViewRepresentable</code> 协议，你要添加两个必要的方法：<code>UIView(context:)</code> 方法和 <code>updateUIView(_: context:)</code> 方法。<code>UIView(context:)</code> 方法用来创建 <code>MKMapView</code>；<code>updateUIView(_: context:)</code> 方法用来配置 view 和响应变化。</p>
+<h3 id="第3步-4"><a href="#第3步-4" class="headerlink" title="第3步"></a>第3步</h3><p>把 <code>body</code> 属性用 <code>UIView(context:)</code> 方法替换掉，在 <code>UIView(context:)</code> 方法中创建并返回一个空的 <code>MKMapView</code>。<br><img src="/images/SwiftUI/part1/archive1/section5/step3.png" alt="step3"></p>
+<h3 id="第4步-4"><a href="#第4步-4" class="headerlink" title="第4步"></a>第4步</h3><p>创建 <code>updateUIView(_: context:)</code> 方法，利用正确的坐标来把 Turtle Rock 设置到地图的中心，并确定地图合适的 region （地图显示的区域大小）。<br><img src="/images/SwiftUI/part1/archive1/section5/step4.png" alt="step4"></p>
+<p>当预览为 static（静态模式）时，只会渲染 SwiftUI View。因为 <code>MKMapView</code> 是一个 <code>UIView</code> 的子类，你要把预览切换成 live（实时模式）才能看到地图。</p>
+<h3 id="第5步-4"><a href="#第5步-4" class="headerlink" title="第5步"></a>第5步</h3><p>点击 <strong>Live Preview</strong> 按钮来把预览切换成实时模式。有可能也要在预览上方点一下 <strong>Try Again</strong> 或 <strong>Resume</strong>按钮才能显示实时的预览。<br><img src="/images/SwiftUI/part1/archive1/section5/step5.png" alt="step5"></p>
+<blockquote>
+<p>你会立刻看到 Joshua Tree National Park 的地图，Turtle Rock 就位于这个公园内。</p>
+</blockquote>
+<h2 id="第六节：把详情-view-组合起来"><a href="#第六节：把详情-view-组合起来" class="headerlink" title="第六节：把详情 view 组合起来"></a>第六节：把详情 view 组合起来</h2><p>目前你已经有了所需的全部组件：地点的名称、圆形的图片和显示位置的地图。</p>
+<p><img src="/images/SwiftUI/part1/archive1/section6/section6.png" alt="section6"><br>结合目前使用的所有工具，你可以把这些自定义 view 组合起来创建一个地标详情视图，来完成我们最终的设计。</p>
+<h3 id="第1步-5"><a href="#第1步-5" class="headerlink" title="第1步"></a>第1步</h3><p>在工程的导航栏中，选择 <code>ContentView.swift</code> 文件<br><img src="/images/SwiftUI/part1/archive1/section6/step1.png" alt="step1"></p>
+<h3 id="第2步-5"><a href="#第2步-5" class="headerlink" title="第2步"></a>第2步</h3><p>在之前创建好的 <code>VStack</code> 里面嵌入一个 <code>VStack</code>，让它把三个 text view 包起来。<br><img src="/images/SwiftUI/part1/archive1/section6/step2.png" alt="step2"></p>
+<h3 id="第3步-5"><a href="#第3步-5" class="headerlink" title="第3步"></a>第3步</h3><p>把你自定义好的 <code>MapView</code> 添加到 stack 的最顶层。利用 <code>frame(wdith:height:)</code> 方法 <code>MapView</code> 的尺寸设置好。<br><img src="/images/SwiftUI/part1/archive1/section6/step3.png" alt="step3"></p>
+<blockquote>
+<p>当你只指定 height 参数时，view 会自动根据其内容来计算出高度。在这段代码中， <code>MapView</code> 会撑满所有可用的空间（水平方向）。</p>
+</blockquote>
+<h3 id="第4步-5"><a href="#第4步-5" class="headerlink" title="第4步"></a>第4步</h3><p>点击 <code>Live Preview</code> 按钮，来查看渲染好的地图控件。</p>
+<blockquote>
+<p>当预览以 Live Preview（实时模式）显示时，你可以继续编辑这些 view。</p>
+</blockquote>
+<h3 id="第5步-5"><a href="#第5步-5" class="headerlink" title="第5步"></a>第5步</h3><p>把 <code>CircleImage</code> 视图添加到 stack 中去。<br><img src="/images/SwiftUI/part1/archive1/section6/step5.png" alt="step5"></p>
+<h3 id="第6步-4"><a href="#第6步-4" class="headerlink" title="第6步"></a>第6步</h3><p>为了把 image view 布局到 map view 的上面，要在竖直方向上给 image view 设置 -130 pt 的偏移量，并且在 bottom（底部）留出 -130 pt 的 padding（边距）来跟其他 view 隔开。<br><img src="/images/SwiftUI/part1/archive1/section6/step6.png" alt="step6"></p>
+<blockquote>
+<p>把图片往上移动调整是为了给 text 上方留出一些空间。</p>
+</blockquote>
+<h3 id="第7步-2"><a href="#第7步-2" class="headerlink" title="第7步"></a>第7步</h3><p>在最外层 <code>VStack</code> 的底部添加一个 spacer ，把整体内容推到屏幕顶部。<br><img src="/images/SwiftUI/part1/archive1/section6/step7.png" alt="step7"></p>
+<h3 id="第8步-1"><a href="#第8步-1" class="headerlink" title="第8步"></a>第8步</h3><p>最后，为了让 map 的内容可以伸展到紧贴屏幕上边缘，要在 map view 中添加一个 <code>IgnoringSafeArea(.top)</code> 的修饰器方法来忽略调 Safe Area 的上边距。<br><img src="/images/SwiftUI/part1/archive1/section6/step8.png" alt="step8"></p>
+<hr>
+<p>第一章到此结束。</p>
+<h1 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h1><p>测试一下，看看你有没有掌握</p>
+<p><strong>1.如果要创建一个自定义的 SwiftUI View，应该在哪里声明这个 view 的布局？</strong><br>a. 在这个 view 的初始化器中声明。<br>b. 在 <code>body</code> 属性中声明。<br>c. 在 <code>layoutSubviews()</code> 方法中声明。</p>
+<blockquote>
+<p>正确答案：b<br>自定义的 view 要在遵循了 <code>View</code> 协议的 <code>body</code> 属性中实现。</p>
+</blockquote>
+<p><strong>2.下列 view 代码所渲染出来的布局是哪个？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var body: some View &#123;</div><div class="line">    HStack &#123;</div><div class="line">        CircleImage()</div><div class="line">        VStack(alignment: .leading) &#123;</div><div class="line">            Text(&quot;Turtle Rock&quot;)</div><div class="line">                .font(.title)</div><div class="line">            Text(&quot;Joshua Tree National Park&quot;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="/images/SwiftUI/part1/archive1/practice/a.png" alt="answer" title="a."><br><img src="/images/SwiftUI/part1/archive1/practice/b.png" alt="answer" title="b."><br><img src="/images/SwiftUI/part1/archive1/practice/c.png" alt="answer" title="c."></p>
+<blockquote>
+<p>正确答案：c</p>
+</blockquote>
+<p><strong>3.要从自定义 view 的 <code>body</code> 属性中返回三个视图，哪一个是正确的方式？</strong><br>a.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">VStack &#123;</div><div class="line">    Text(&quot;Turtle Rock&quot;)</div><div class="line">        .font(.title)</div><div class="line">    Divier()</div><div class="line">    Text(&quot;Joshua Tree National Park&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>b.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    Text(&quot;Turtle Rock&quot;).font(.title)</div><div class="line">    Divier()</div><div class="line">    Text(&quot;Joshua Tree National Park&quot;)</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>c.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Text(&quot;Turtle Rock&quot;)</div><div class="line">    + Divier()</div><div class="line">    + Text(&quot;Joshua Tree National Park&quot;)</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>正确答案：a</p>
+</blockquote>
+<p><strong>4.如果要使用修饰器方法来配置一个 view，哪一个方式是正确的？</strong><br>a.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var text = Text(&quot;Hello World!&quot;)</div><div class="line">text.font(.title)</div><div class="line">text.color(.purple)</div><div class="line">return text</div></pre></td></tr></table></figure></p>
+<p>b.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var text = Text(&quot;Hello World!&quot;)</div><div class="line">text.font = .title</div><div class="line">text.color = .purple</div><div class="line">return text</div></pre></td></tr></table></figure></p>
+<p>c.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Text(&quot;Hello World!&quot;)</div><div class="line">    .font(.title)</div><div class="line">    .color(.purple)</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>正确答案：c</p>
+</blockquote>
 
       
     </div>
@@ -457,6 +559,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SwiftUI/" rel="tag"># SwiftUI</a>
+          
+        </div>
       
 
       
@@ -507,7 +615,7 @@
   
     <div class="comments" id="comments">
       <div class="ds-thread" data-thread-key="2019/07/03/SwiftUI Chinese Tutorials/"
-           data-title="SwiftUI Tutorials 中文翻译：（一）SwiftUI 要领" data-url="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials/">
+           data-title="【SwiftUI Tutorials 中文翻译】（一）SwiftUI 要领 - 第一章：创建并组合 View" data-url="https://zaynliu.github.io/2019/07/03/SwiftUI Chinese Tutorials/">
       </div>
     </div>
 
@@ -585,7 +693,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -618,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SwiftUI-要领"><span class="nav-number">2.</span> <span class="nav-text">SwiftUI 要领</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一节：创建新项目并探索画布"><span class="nav-number">2.1.</span> <span class="nav-text">第一节：创建新项目并探索画布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步"><span class="nav-number">2.1.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步"><span class="nav-number">2.1.2.</span> <span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步"><span class="nav-number">2.1.3.</span> <span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步"><span class="nav-number">2.1.4.</span> <span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步"><span class="nav-number">2.1.5.</span> <span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步"><span class="nav-number">2.1.6.</span> <span class="nav-text">第6步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二节：自定义-Text-View"><span class="nav-number">2.2.</span> <span class="nav-text">第二节：自定义 Text View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-1"><span class="nav-number">2.2.5.</span> <span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-1"><span class="nav-number">2.2.6.</span> <span class="nav-text">第6步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节：使用-stack-来把-view-组合起来"><span class="nav-number">2.3.</span> <span class="nav-text">第三节：使用 stack 来把 view 组合起来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-2"><span class="nav-number">2.3.3.</span> <span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-2"><span class="nav-number">2.3.4.</span> <span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-2"><span class="nav-number">2.3.5.</span> <span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-2"><span class="nav-number">2.3.6.</span> <span class="nav-text">第6步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第7步"><span class="nav-number">2.3.7.</span> <span class="nav-text">第7步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第8步"><span class="nav-number">2.3.8.</span> <span class="nav-text">第8步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第9步"><span class="nav-number">2.3.9.</span> <span class="nav-text">第9步</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SwiftUI-要领-第一章：创建并组合-View"><span class="nav-text">SwiftUI 要领 - 第一章：创建并组合 View</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一节：创建新工程并探索画布"><span class="nav-text">第一节：创建新工程并探索画布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步"><span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步"><span class="nav-text">第6步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二节：自定义-Text-View"><span class="nav-text">第二节：自定义 Text View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-1"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-1"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-1"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-1"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-1"><span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-1"><span class="nav-text">第6步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节：使用-stack-来把-view-组合起来"><span class="nav-text">第三节：使用 stack 来把 view 组合起来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-2"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-2"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-2"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-2"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-2"><span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-2"><span class="nav-text">第6步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第7步"><span class="nav-text">第7步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第8步"><span class="nav-text">第8步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第9步"><span class="nav-text">第9步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四节：创建一个自定义的-Image-View"><span class="nav-text">第四节：创建一个自定义的 Image View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-3"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-3"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-3"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-3"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-3"><span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-3"><span class="nav-text">第6步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第7步-1"><span class="nav-text">第7步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五节：把-UIKit-和-SwiftUI-View-结合起来"><span class="nav-text">第五节：把 UIKit 和 SwiftUI View 结合起来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-4"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-4"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-4"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-4"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-4"><span class="nav-text">第5步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六节：把详情-view-组合起来"><span class="nav-text">第六节：把详情 view 组合起来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步-5"><span class="nav-text">第1步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步-5"><span class="nav-text">第2步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步-5"><span class="nav-text">第3步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4步-5"><span class="nav-text">第4步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5步-5"><span class="nav-text">第5步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6步-4"><span class="nav-text">第6步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第7步-2"><span class="nav-text">第7步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第8步-1"><span class="nav-text">第8步</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课后练习"><span class="nav-text">课后练习</span></a></li></ol></div>
             
 
           </div>
