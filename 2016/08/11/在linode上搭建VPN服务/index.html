@@ -77,12 +77,12 @@
 
 
 
-<meta name="description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
+<meta name="description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建梯子，怕以后忘记，在这里记录一下，同时也为初次接触 Linode 的朋友做个参考。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Linode上搭建VPN服务">
+<meta property="og:title" content="在Linode上搭建梯子">
 <meta property="og:url" content="https://zaynliu.github.io/2016/08/11/在linode上搭建VPN服务/index.html">
 <meta property="og:site_name" content="ZaynLiu">
-<meta property="og:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
+<meta property="og:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建梯子，怕以后忘记，在这里记录一下，同时也为初次接触 Linode 的朋友做个参考。">
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/add_a_linode.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/rebuild_tap.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/rebuild_ubuntu.png">
@@ -91,10 +91,10 @@
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/system_running.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/ssh_root.png">
 <meta property="og:image" content="https://zaynliu.github.io/images/linode/welcome_ubuntu.png">
-<meta property="og:updated_time" content="2016-08-11T08:58:16.000Z">
+<meta property="og:updated_time" content="2019-07-04T10:06:59.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Linode上搭建VPN服务">
-<meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。">
+<meta name="twitter:title" content="在Linode上搭建梯子">
+<meta name="twitter:description" content="最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建梯子，怕以后忘记，在这里记录一下，同时也为初次接触 Linode 的朋友做个参考。">
 <meta name="twitter:image" content="https://zaynliu.github.io/images/linode/add_a_linode.png">
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <title>在Linode上搭建VPN服务 | ZaynLiu</title>
+  <title>在Linode上搭建梯子 | ZaynLiu</title>
   
 
 
@@ -275,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在Linode上搭建VPN服务</h1>
+          <h1 class="post-title" itemprop="name headline">在Linode上搭建梯子</h1>
         
 
         <div class="post-meta">
@@ -357,7 +357,7 @@
       
 
       
-        <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建 VPN 服务，怕以后忘记，在这里记录一下，同时也为初次接触 Linode VPN 的朋友做个参考。<br><a id="more"></a><br>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。</p>
+        <p>最近购买了一个 Linode 的 VPS第一次在 Linode 上面搭建梯子，怕以后忘记，在这里记录一下，同时也为初次接触 Linode 的朋友做个参考。<br><a id="more"></a><br>本文是使用 PPTP 和 iptables 转发的原理，用 Mac 在 Linode 远端服务器上面搭建 VPN 服务，如果已经有过相关经验的朋友可以忽略本文啦。PPTP 就是 Point to Point Tunneling Protocol，直接翻译过来就是点对点隧道协议，它是基于 PPP 协议的一种增强型安全协议，很多的 VPN 服务就是通过 PPTP 来实现的，相关原理这里就不多说了，想要详细了解的朋友可以自行查找一下相关资料。iptables 可以视作是一个防火墙，它在本文的 VPN 搭建过程中起到定义转发规则的作用。</p>
 <p>好了，准备姿势介绍了，下面正式开始科学上网步骤</p>
 <hr>
 <h1 id="配置-Linode-服务器"><a href="#配置-Linode-服务器" class="headerlink" title="配置 Linode 服务器"></a>配置 Linode 服务器</h1><h2 id="创建一个-Linode-帐户"><a href="#创建一个-Linode-帐户" class="headerlink" title="创建一个 Linode 帐户"></a>创建一个 Linode 帐户</h2><p>首先需要在 Linode 的官网注册一个帐户<a href="https://manager.linode.com/session/signup" target="_blank" rel="external">Create an account</a>，准备一张 VISA 或者 MasterCard 的银行卡，用来为 Linode 帐户充值。</p>
@@ -470,7 +470,7 @@
   
     <div class="comments" id="comments">
       <div class="ds-thread" data-thread-key="2016/08/11/在linode上搭建VPN服务/"
-           data-title="在Linode上搭建VPN服务" data-url="https://zaynliu.github.io/2016/08/11/在linode上搭建VPN服务/">
+           data-title="在Linode上搭建梯子" data-url="https://zaynliu.github.io/2016/08/11/在linode上搭建VPN服务/">
       </div>
     </div>
 
